@@ -1,0 +1,155 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* border: 2px solid red; */
+}
+
+body {
+    height: 100svh;
+    background: black;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+#record-player {
+    position: relative;
+    z-index: 999;
+    width: 0;
+    height: 0;
+}
+
+#record-container {
+    border: 1px solid #eeeeee;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+#record {
+    width: 245px;
+    height: 245px;
+    border-radius: 50%;
+    background: #424242;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    animation: spin 1000ms infinite linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#record-center {
+    background: linear-gradient(90deg, black 30%, #ffd54f 30%);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: 72.5px;
+    left: 72.5px;
+}
+
+#center {
+    width: 10px;
+    height: 10px;
+    background: #eeeeee;
+    border-radius: 100%;
+    position: absolute;
+    left: 45px;
+    top: 45px;
+}
+
+#arm-base {
+    width: 50px;
+    height: 50px;
+    background: gray;
+    border-radius: 100%;
+    position: absolute;
+    left: -20px;
+    top: -200px;
+    animation: arm-move 5000ms infinite linear;
+}
+
+@keyframes arm-move {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+#innerarmbase {
+    width: 42px;
+    height: 42px;
+    background: #eeeeee;
+    border-radius: 100%;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+}
+
+#arm-bar {
+    height: 310px;
+    width: 8px;
+    background: linear-gradient(180deg, transparent 46%, #e0e0e0 46%);
+    position: absolute;
+    top: -155px;
+    left: 16.5px;
+    transform: rotate(-5deg);
+}
+
+#arm-bar-bottom {
+    height: 150px;
+    width: 8px;
+    position: absolute;
+    top: 234px;
+    transform: rotate(-45deg);
+    background: linear-gradient(180deg, transparent 49%, #e0e0e0 49%);
+}
+
+#needle {
+    width: 13px;
+    height: 24px;
+    background: #f44336;
+    border-radius: 2px;
+    position: absolute;
+    top: 130px;
+    margin-left: -1.5px;
+}
+
+#controls {
+    /*   border: 1px solid red; */
+    width: 75px;
+    height: 40px;
+    position: absolute;
+    top: 240px;
+    left: 265px;
+    display: flex;
+}
+
+.button {
+    width: 30px;
+    height: 30px;
+    background: gray;
+    border: 2px solid #666666;
+    margin: 5px 0 5px 5px;
+    border-radius: 100%;
+}
+
+.button:last-child {
+    margin-right: 5px;
+}
