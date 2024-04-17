@@ -9,7 +9,7 @@
 
 body {
     height: 100svh;
-    background: darkgray;
+    background: #bbb;
     display: grid;
     justify-content: center;
     align-items: center;
@@ -32,6 +32,7 @@ body {
     display: grid;
     justify-items: center;
     align-items: center;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
 #record {
@@ -44,6 +45,7 @@ body {
     display: grid;
     justify-items: center;
     align-items: center;
+    background-image: radial-gradient(circle at center, transparent 32.75%, rgba(255, 255, 255, 0.05) 33%, rgba(255, 255, 255, 0.05) 38%, transparent 38.25%, transparent 38.75%, rgba(255, 255, 255, 0.05) 39%, rgba(255, 255, 255, 0.05) 48%, transparent 48.25%, transparent 48.75%, rgba(255, 255, 255, 0.05) 49%, rgba(255, 255, 255, 0.05) 57%, transparent 57.25%, transparent 57.75%, rgba(255, 255, 255, 0.05) 58%, rgba(255, 255, 255, 0.05) 62%, transparent 62.25%, transparent 62.75%, rgba(255, 255, 255, 0.05) 63%, rgba(255, 255, 255, 0.05) 69%, transparent 69.25%);
 }
 
 /* #record::after {
@@ -61,7 +63,8 @@ body {
 #record::before {
     content: "";
     position: absolute;
-    background-color: black;
+    background-color: #bbb;
+    box-shadow: 0 0 5px black;
     width: 6px;
     aspect-ratio: 1;
     top: 50%;
