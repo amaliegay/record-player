@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap");
 
 * {
     padding: 0;
@@ -13,11 +13,11 @@ body {
     display: grid;
     justify-content: center;
     align-items: center;
+    overflow: clip;
 }
 
 #record-player {
     position: relative;
-    z-index: 999;
     width: 0;
     height: 0;
 }
@@ -41,11 +41,33 @@ body {
     border-radius: 50%;
     background: black;
     position: absolute;
-    animation: spin 1s infinite linear 2s;
     display: grid;
     justify-items: center;
     align-items: center;
-    background-image: radial-gradient(circle at center, transparent 32.75%, rgba(255, 255, 255, 0.05) 33%, rgba(255, 255, 255, 0.05) 38%, transparent 38.25%, transparent 38.75%, rgba(255, 255, 255, 0.05) 39%, rgba(255, 255, 255, 0.05) 48%, transparent 48.25%, transparent 48.75%, rgba(255, 255, 255, 0.05) 49%, rgba(255, 255, 255, 0.05) 57%, transparent 57.25%, transparent 57.75%, rgba(255, 255, 255, 0.05) 58%, rgba(255, 255, 255, 0.05) 62%, transparent 62.25%, transparent 62.75%, rgba(255, 255, 255, 0.05) 63%, rgba(255, 255, 255, 0.05) 69%, transparent 69.25%);
+    background-image: radial-gradient(
+        circle at center,
+        transparent 32.75%,
+        rgba(255, 255, 255, 0.05) 33%,
+        rgba(255, 255, 255, 0.05) 38%,
+        transparent 38.25%,
+        transparent 38.75%,
+        rgba(255, 255, 255, 0.05) 39%,
+        rgba(255, 255, 255, 0.05) 48%,
+        transparent 48.25%,
+        transparent 48.75%,
+        rgba(255, 255, 255, 0.05) 49%,
+        rgba(255, 255, 255, 0.05) 57%,
+        transparent 57.25%,
+        transparent 57.75%,
+        rgba(255, 255, 255, 0.05) 58%,
+        rgba(255, 255, 255, 0.05) 62%,
+        transparent 62.25%,
+        transparent 62.75%,
+        rgba(255, 255, 255, 0.05) 63%,
+        rgba(255, 255, 255, 0.05) 69%,
+        transparent 69.25%
+    );
+    overflow: clip;
 }
 
 /* #record::after {
@@ -74,15 +96,6 @@ body {
     z-index: 1;
 }
 
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
 #record-center {
     background: rgb(231, 226, 199);
     width: 85px;
@@ -94,12 +107,13 @@ body {
     display: grid;
     align-items: center;
     justify-content: center;
+    animation: spin 1s infinite linear 2s;
 }
 
 #record-center::after {
     content: "CHEN.XING";
     color: black;
-    font-family:  "Roboto", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 300;
     font-style: italic;
     font-size: 0.7rem;
@@ -109,25 +123,63 @@ body {
     padding-top: 20px;
 }
 
-.shadow {
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.glare {
+    height: 100%;
+    width: 100%;
+    filter: blur(2vh);
+}
+
+.glare::before {
+    content: "";
+    height: 100%;
+    width: 100%;
     position: absolute;
-    height: 50px;
-    border: 5px solid rgba(225, 225, 225, 0.3);
-    border-left-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    border-top-left-radius: 50% 40px;
-    border-top-right-radius: 50% 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    clip-path: polygon(100% 0, 100% 50%, 0 50%, 0 100%);
+    animation: teeter 1.3333333333s linear infinite;
 }
 
-.shadow-outter {
-    top: 10px;
-    width: 135px;
+.glare::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.05);
+    clip-path: polygon(0 0, 50% 0, 50% 100%, 100% 100%);
+    animation: teeter-flip 1.3333333333s linear infinite;
 }
 
-.shadow-inner {
-    top: 20px;
-    width: 125px;
+@keyframes teeter {
+    0% {
+        transform: rotate(0deg);
+    }
+    35% {
+        transform: rotate(2.5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes teeter-flip {
+    0% {
+        transform: rotate(0deg);
+    }
+    35% {
+        transform: rotate(-2.5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 #arm-base {
@@ -140,6 +192,8 @@ body {
     top: -185px;
     transform: rotate(-82deg);
     animation: move-init 1s 1 forwards 1s, move 50s infinite linear 2s;
+    display: grid;
+    justify-content: center;
 }
 
 @keyframes move-init {
@@ -163,7 +217,8 @@ body {
     }
 }
 
-#inner-arm-base {
+#arm-base::before {
+    content: "";
     width: 42px;
     height: 42px;
     background: rgb(197, 196, 196);
@@ -174,42 +229,44 @@ body {
 }
 
 #arm-bar {
-    height: 320px;
+    height: 160px;
     width: 8px;
-    background: linear-gradient(180deg, transparent 46%, #f5f5f5 46%);
+    background-image: linear-gradient(to right, #bbb, #ccc 40%, #999);
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+#arm-bar::before {
+    content: "";
     position: absolute;
-    top: -155px;
-    left: 16.5px;
+    width: 15px;
+    height: 30px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    clip-path: polygon(0% 50%, 25% 100%, 75% 100%, 100% 50%, 100% 0, 0 0);
+    background-image: linear-gradient(to bottom, transparent 45%, rgba(255, 255, 255, 0.025) 55%), linear-gradient(to right, #222, #111);
 }
 
 #arm-bar::after {
     content: "";
+    display: block;
+    width: 15.6px;
+    height: 25px;
     position: absolute;
-    background-color: black;
-    width: 10px;
-    height: 15px;
-    top: 145px;
-    left: -4px;
-    z-index: 1;
-    border: 2px solid #292929;
+    bottom: -84.5px;
+    left: -37px;
+    transform: rotate(25deg);
+    border-radius: 2px;
+    clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 100% 100%, 0 100%);
+    background-image: linear-gradient(to bottom, transparent 45%, rgba(255, 255, 255, 0.025) 55%), linear-gradient(to right, #222, #111);
 }
 
 #arm-bar-bottom {
-    height: 150px;
+    height: 75px;
     width: 8px;
     position: absolute;
-    top: 244px;
+    bottom: -70px;
+    left: -15px;
     transform: rotate(25deg);
-    background: linear-gradient(180deg, transparent 49%, #f5f5f5 49%);
-}
-
-#needle {
-    width: 13px;
-    height: 24px;
-    background: #515151;
-    border-radius: 2px;
-    position: absolute;
-    top: 130px;
-    margin-left: -3px;
-    border: 2px solid #292929;
+    background-image: linear-gradient(to right, #bbb, #ccc 40%, #999);
 }
