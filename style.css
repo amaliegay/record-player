@@ -235,26 +235,25 @@ body {
     background-image: linear-gradient(to bottom, transparent 45%, rgba(255, 255, 255, 0.025) 55%), linear-gradient(to right, #222, #111);
 }
 
-#arm-bar::after {
+#arm-bar-bottom {
+    height: 75px;
+    width: 8px;
+    position: absolute;
+    bottom: -180px;
+    left: 5.8px;
+    transform: rotate(25deg);
+    background-image: linear-gradient(to right, #bbb, #ccc 40%, #999);
+}
+
+#arm-bar-bottom::after {
     content: "";
     display: block;
     width: 15.6px;
     height: 25px;
     position: absolute;
-    bottom: -84.5px;
-    left: -37px;
-    transform: rotate(25deg);
+    bottom: -25px;
+    left: -3.5px;
     border-radius: 2px;
     clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 100% 100%, 0 100%);
     background-image: linear-gradient(to bottom, transparent 45%, rgba(255, 255, 255, 0.025) 55%), linear-gradient(to right, #222, #111);
-}
-
-#arm-bar-bottom {
-    height: 75px;
-    width: 8px;
-    position: absolute;
-    bottom: -70px;
-    left: -15px;
-    transform: rotate(25deg);
-    background-image: linear-gradient(to right, #bbb, #ccc 40%, #999);
 }
